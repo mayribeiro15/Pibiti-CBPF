@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 
-filename = "estromatolito.tiff"
+filename = "estromatolito.jpg"
 image = cv2.imread(filename) #lendo a imagem
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) #convertendo para RGB
 pixel_values = image.reshape((-1, 3)) #imagempara 2D e 3 cores
@@ -31,6 +31,6 @@ segmented_image = segmented_image.reshape(image.shape) #reshape para imagem orig
 
 plt.imshow(segmented_image)
 
-filename2 = "estromatolito_kmeans.tiff"
+filename2 = "estromatolito_kmeans.jpg"
 cv2.imwrite(filename2,segmented_image)
 
