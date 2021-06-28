@@ -2,7 +2,7 @@
 
 ## Técnicas de Segmentação
 ### K-means
-O k-mean consiste na coloração de uma determinada imagem em k cores. O processo é utilizado atualmente para segmentação inicial das imagens processadas e a quantidade de cores na segmentação é definida nas linhas de código. O k-means prioriza as cores por ocorrência de pixels semelhantes, o que pode gerar erros em casos complexos.
+O k-means consiste na coloração de uma determinada imagem em k cores. O processo é utilizado atualmente para segmentação inicial das imagens processadas e a quantidade de cores na segmentação é definida nas linhas de código. O algortimo prioriza as cores por ocorrência de pixels semelhantes, o que pode gerar erros em casos complexos.
 
 Em casos simplificados o algoritmo consegue boa segmentação com um número baixo de interações.
 <p align="center">
