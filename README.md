@@ -1,4 +1,7 @@
-# Processamento de Imagens: Segmentação e Detecção de Borda (PIBITI-CBPF)
+# Processamento de Imagens: Algoritmos de Segmentação e Detecção de Borda com Análise de Redes Neurais Deep Learning (PIBITI-CBPF)
+
+## Resumo 
+O processamento de imagens para detecção de padrões em análises microscópicas representa um grande desafio em questões de automatização. O objetivo deste trabalho é desenvolver uma análise das técnicas de segmentação existentes e gerar resultados sobre as formas mais eficientes. Primeiramente, foi feito um estudo base de técnicas de segmentação de imagens e da biblioteca OpenCv, utilizada na maior parte dos estudos realizados. Em seguida, foram analisados algoritmos de segmentação e detecção de borda de forma automatizar técnicas e obter resultados ainda dependentes de observção humana. Por fim, foi feita uma análise da aplicação da segmentação de imagens a Redes Neurais Deep Learning, em especial ao algoritmo CNN (Convolutional Neural Network). Os resultados dessas análises subsequentes demonstram um comparativo das técnicas de segmentação e do impacto nda automatização nos resultados encontrados.
 
 ## Técnicas de Segmentação
 ### K-means
@@ -20,22 +23,15 @@ Embora a definição do número de cores seja definido nas linhas de código, o 
 
 ### Region Growing
 
-### CNN Segmentation
-A técnica CNN é uma sigla do termo em inglês para Redes Neurais Convolucionais, ou seja, são utilizados algoritmos de deep learning para o processo. A CNN Segmentation possui maior complexidade computacional do que as técnicas descritas acima, por isso, nem todos os pixels da imagem serão de fato avaliados no CNN. Para selecionar os dados mais importantes, é necessário um pré-processamento que transforme as características dos dados de entrada.
-
-A transformação incial na imagem deve ser feita através de um operador de convolução entre a matriz e o kernel correspondente, que pondera cada pixel com seus adjacentes, reduzindo também as dimensões da imagem. Para evitar que a convolução seja aplicada manualmente, foi utilizada novamente a biblioteca do OpenCv cuja aplicação do filtro 2d apresentou resultado satisfatório nas etapas da convolução. Como o resultado da convolução pode acarretar em pixels negativos, pode ser aplicada a função Relu, para zerar esses valores.
+### Filtros Convolucionais
+Os filtros convolucionais são uma forma de ponderar a informação de cada pixel com as de seus adjacentes através de um operador de convolução entre a matriz e o kernel (matriz de filtro) correspondente. Para evitar que a convolução seja aplicada manualmente, foi utilizada novamente a biblioteca do OpenCv cuja aplicação do filtro 2d apresentou resultado satisfatório nas etapas da convolução. Como o resultado da convolução pode acarretar em pixels negativos, pode ser aplicada a função Relu, para zerar esses valores.
 No exemplo abaixo temos a aplicação de um filtro laplaciano na imagem original, primeiramente com a convolução detalhada e em seguida com a biblioteca disponível. Percebemos que o OpenCv pode ser um grande aliado para reduzir significativamente a aplicação convolucional.
 <p align="center">
   <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/CNN-Segmentation/idaho_convolve.jpg" width="350" =>
   <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/CNN-Segmentation/idaho_opencv.jpg" width="350">
 </p>
 
-O resultado da convolução será uma sequência de features maps, com as principais características ponderadas pelos kernels. Para o treinamento da rede neural, são necessárias mais duas etapas. A primeira delas é o pooling, que aplica distorções e rotações na imagem de forma a enfatizar as características principais no feature map, sendo capaz de reduzir ainda mais a dimensionalidade e reduzindo também o overfitting presente na convolução. O resultado nessa etapa é uma sequência de pool maps para cada feature map reduzido. Por fim, em cada matriz de max pooling, é aplicado um flattening dimensionando cada matriz com apenas uma coluna para aplicação da rede neural densa.
-
-
-
-Para que a rede neural seja aplicada de fato, é necessário treinamento da segmentação para diferentes inputs de imagens, de forma a relacionar os flat maps da rede com o resultado final, descartando os feature maps que são desconexos com as principais características. Para a aplicação nesse projeto, utilizaremos um classe treinada previamente e que pode ser integrada ao pré-processamento com OpenCV.
-
+O resultado da convolução será uma sequência de features maps, com as principais características ponderadas pelos kernels. Para a aplicação da CNN, que é uma sigla do termo em inglês para Redes Neurais Convolucionais, será necessário aplicar o resultado dessa segmentação como a primeira etapa de pré-processamento. Esse processo é responsável também pela redução das dimensões da imagem, o que acelera o procesamento devido a alta complexidade computacional do CNN.
 
 ## Técnicas de Detecção de Borda
 ### Slic
@@ -78,6 +74,16 @@ Em casos mais simplificados o algoritmo apresenta uma boa segmentação apenas c
 </p>
 
 Além dos métodos acima, podem ser aplicados pré-processamentos específicos para um bom resultado do watershed. Por esse fator, a técnica é considerada como supervisionada pois demanda acompanhamento para segmentação manual ou treinamento das classes.
+
+## CNN - Convolucional Neural Segmentation
+
+Nos algoritmos anteriores, era necessário um acompanhamento de forma a escolher regiões, número de segmentação ou até mesmo seeds inciais para o processamento da imagem. A segmentação por redes neurais ou deep learning traz uma automatização pois aplica técnicas de machine learning  em redes neurais para treinamento de classes de modo que o programa possa reconhecer sozinho padrões em várias camadas de processamento de imagem.
+
+Devido a alta complexidade computacional do algoritmo, são necesssárias etapas de pré-processamento das imagens. Como explicado na seção sobre filtros convolucionais, os feature maps são considerados a primeira etapa pois, além de aplicar a transformação convolucional e também operam significativa redução das dimensões da imagem. Esses features maps configuram o range de filtros a serem avaliados e treinados pelo deep learning.
+
+Para o treinamento da rede neural, são necessárias mais duas etapas. A primeira delas é o pooling, que aplica distorções e rotações na imagem de forma a enfatizar as características principais no feature map, sendo capaz de reduzir ainda mais a dimensionalidade e reduzindo também o overfitting presente na convolução. O resultado nessa etapa é uma sequência de pool maps para cada feature map reduzido. Por fim, em cada matriz de max pooling, é aplicado um flattening dimensionando cada matriz com apenas uma coluna para aplicação da rede neural densa.
+
+Para que a rede neural seja aplicada de fato, é necessário treinamento da segmentação para diferentes inputs de imagens, de forma a relacionar os flat maps da rede com o resultado final, descartando os feature maps que são desconexos com as principais características. Para a aplicação nesse projeto, utilizaremos um classe treinada previamente e que pode ser integrada ao pré-processamento com OpenCV.
 
 ## Materiais de Referência
 K-means:
