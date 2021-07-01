@@ -33,7 +33,7 @@ No exemplo abaixo, a quantidade de regiões foi ajustada manualmente de forma a 
 
 Da mesma forma que o K-means, como o agrupamento de regiões é produto exclusivamente da semelhança entre os pixels, o Slic também pode ser considerado um algoritmo não supervisionado.
 
-##Canny Edge
+### Canny Edge
 O algoritmo é amplamente difundido por utilizar, assim como o slic, uma segmentação com técnica de decisão arbitrária e direta. Nessa caso é utlizado, primeiramento, um filtro gaussiano que aplica um efeito de embaçamento na imagem. A partir da imagem filtrada, são analisados a magnitude e a orientação do gradiente entre os pixels da imagem, de forma a identificar as bordas.
 
 A detecção de falhas internas e ranhuras como bordas é comum nesse algoritmo devido ao aparecimento indesejado de gradientes. Para controlar essa má interpretação, pode ser aplicado um processo de segmentação como pré-processamento.
