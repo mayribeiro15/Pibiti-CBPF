@@ -8,7 +8,7 @@ import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 
-filename = "estromatolito.jpg"
+filename = "mineral.jpg"
 image = cv2.imread(filename) #lendo a imagem
 
 gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
@@ -32,7 +32,7 @@ segmented_image = segmented_image+1 #background is 1
 segmented_image[unknown==255] = 0 #unknown is zero
 
 segmented_image = cv2.watershed(image,segmented_image)
-image[segmented_image == -1] = [255,0,0]
+image[segmented_image == -1] = [0,255,0]
 
 plt.imshow(thresh)
 

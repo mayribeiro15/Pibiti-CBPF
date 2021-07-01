@@ -8,7 +8,7 @@ import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 
-filename = "coins.jpg"
+filename = "mineral.jpg"
 image = cv2.imread(filename) #lendo a imagem
 
 #aplicando o k-means
