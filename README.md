@@ -3,6 +3,10 @@
 ## Resumo 
 O processamento de imagens para detecção de padrões em análises microscópicas representa um grande desafio em questões de automatização. O objetivo deste trabalho é desenvolver uma análise das técnicas de segmentação existentes e gerar resultados sobre as formas mais eficientes. Primeiramente, foi feito um estudo base de técnicas de segmentação de imagens e da biblioteca OpenCv, utilizada na maior parte dos estudos realizados. Em seguida, foram analisados algoritmos de segmentação e detecção de borda de forma automatizar técnicas e obter resultados ainda dependentes de observção humana. Por fim, foi feita uma análise da aplicação da segmentação de imagens a Redes Neurais Deep Learning, em especial ao algoritmo CNN (Convolutional Neural Network). Os resultados dessas análises subsequentes demonstram um comparativo das técnicas de segmentação e do impacto nda automatização nos resultados encontrados.
 
+Referências principais:
+- https://kanezaki.github.io/pytorch-unsupervised-segmentation/ICASSP2018_kanezaki.pdf
+- https://daneshyari.com/article/preview/6922503.pdf
+
 ## Técnicas de Segmentação
 ### K-means
 O k-means consiste na coloração de uma determinada imagem em k cores. O processo é utilizado atualmente para segmentação inicial das imagens processadas e a quantidade de cores na segmentação é definida nas linhas de código. O algortimo prioriza as cores por ocorrência de pixels semelhantes, o que pode gerar erros em casos complexos.
@@ -86,6 +90,7 @@ Para o treinamento da rede neural, são necessárias mais duas etapas. A primeir
 Para que a rede neural seja aplicada de fato, é necessário treinamento da segmentação para diferentes inputs de imagens, de forma a relacionar os flat maps da rede com o resultado final, descartando os feature maps que são desconexos com as principais características. Para a aplicação nesse projeto, utilizaremos um classe treinada previamente e que pode ser integrada ao pré-processamento com OpenCV.
 
 ## Materiais de Referência
+Além das referências principais adicionadas no resumo, foram utilizados os seguintes materiais:
 K-means:
 - https://docs.opencv.org/3.4/d1/d5c/tutorial_py_kmeans_opencv.html
 - https://www.thepythoncode.com/article/kmeans-for-image-segmentation-opencv-python
