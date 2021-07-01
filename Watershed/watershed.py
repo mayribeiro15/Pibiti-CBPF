@@ -48,13 +48,16 @@ sure_fg = np.uint8(sure_fg)
 unknown = cv2.subtract(sure_bg,sure_fg)
 
 ret, segmented_image = cv2.connectedComponents(sure_fg) #marker labelling
+
 segmented_image = segmented_image+1 #background is 1
 segmented_image[unknown==255] = 0 #unknown is zero
 
 segmented_image = cv2.watershed(image,segmented_image)
+
 image[segmented_image == -1] = [255,0,0]
 
 plt.imshow(thresh)
+
 
 filename2 = "coins_watershed_kmeans.jpg"
 cv2.imwrite(filename2,image)
