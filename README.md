@@ -27,8 +27,8 @@ O algoritmo implementado pela classe da biblioteca do OpenCv tem como parâmetro
 
 No exemplo abaixo, a quantidade de regiões foi ajustada manualmente de forma a obter a borda da região principal.
 <p align="center">
-  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/Slic/bicolorfish.jpg" width="350">
-  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/Slic/bicolorfish_slic.jpg" width="347">
+  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/Slic/carb.jpg" width="350">
+  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/Slic/carb_slic.jpg" width="347">
 </p>
 
 Da mesma forma que o K-means, como o agrupamento de regiões é produto exclusivamente da semelhança entre os pixels, o Slic também pode ser considerado um algoritmo não supervisionado.
