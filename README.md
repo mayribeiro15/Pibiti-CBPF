@@ -20,6 +20,23 @@ Embora a definição do número de cores seja definido nas linhas de código, o 
 
 ### Region Growing
 
+### CNN Segmentation
+A técnica CNN é uma sigla do termo em inglês para Redes Neurais Convolucionais, ou seja, são utilizados algoritmos de deep learning para o processo. A CNN Segmentation possui maior complexidade computacional do que as técnicas descritas acima, por isso, nem todos os pixels da imagem serão de fato avaliados no CNN. Para selecionar os dados mais importantes, é necessário um pré-processamento que transforme as características dos dados de entrada.
+
+A transformação incial na imagem deve ser feita através de um operador de convolução entre a matriz e o kernel correspondente, que pondera cada pixel com seus adjacentes, reduzindo também as dimensões da imagem. Para evitar que a convolução seja aplicada manualmente, foi utilizada novamente a biblioteca do OpenCv cuja aplicação do filtro 2d apresentou resultado satisfatório nas etapas da convolução. Como o resultado da convolução pode acarretar em pixels negativos, pode ser aplicada a função Relu, para zerar esses valores.
+No exemplo abaixo temos a aplicação de um filtro laplaciano na imagem original, primeiramente com a convolução detalhada e em seguida com a biblioteca disponível. Percebemos que o OpenCv pode ser um grande aliado para reduzir significativamente a aplicação convolucional.
+<p align="center">
+  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/CNN-Segmentation/idaho_convolve.jpg" width="350" =>
+  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/CNN-Segmentation/idaho_opencv.jpg" width="350">
+</p>
+
+O resultado da convolução será uma sequência de features maps, com as principais características ponderadas pelos kernels. Para o treinamento da rede neural, são necessárias mais duas etapas. A primeira delas é o pooling, que aplica distorções e rotações na imagem de forma a enfatizar as características principais no feature map, sendo capaz de reduzir ainda mais a dimensionalidade e reduzindo também o overfitting presente na convolução. O resultado nessa etapa é uma sequência de pool maps para cada feature map reduzido. Por fim, em cada matriz de max pooling, é aplicado um flattening dimensionando cada matriz com apenas uma coluna para aplicação da rede neural densa.
+
+
+
+Para que a rede neural seja aplicada de fato, é necessário treinamento da segmentação para diferentes inputs de imagens, de forma a relacionar os flat maps da rede com o resultado final, descartando os feature maps que são desconexos com as principais características. Para a aplicação nesse projeto, utilizaremos um classe treinada previamente e que pode ser integrada ao pré-processamento com OpenCV.
+
+
 ## Técnicas de Detecção de Borda
 ### Slic
 A técnica Slic é uma sigla do termo Simple Linear Iterative Clustering, que se baseia na técnica de agrupamento em superpixels. Um superpixel simboliza um agrupamento local de pixels segundo as semelhanças entre eles. Portanto, a técnica é análoga a clusterização por K-Means mas com a ressalva de que o algoritmo retorna a borda do superpixel de forma a gerar uma detecção de borda.
@@ -34,7 +51,7 @@ No exemplo abaixo, a quantidade de regiões foi ajustada manualmente de forma a 
 Da mesma forma que o K-means, como o agrupamento de regiões é produto exclusivamente da semelhança entre os pixels, o Slic também pode ser considerado um algoritmo não supervisionado.
 
 ### Canny Edge
-O algoritmo é amplamente difundido por utilizar, assim como o slic, uma segmentação com técnica de decisão arbitrária e direta. Nessa caso é utlizado, primeiramento, um filtro gaussiano que aplica um efeito de embaçamento na imagem. A partir da imagem filtrada, são analisados a magnitude e a orientação do gradiente entre os pixels da imagem, de forma a identificar as bordas.
+O algoritmo é amplamente difundido por utilizar, assim como o slic, uma segmentação com técnica de decisão arbitrária e direta. Nessa caso é utlizado, primeiramente, um kernel de filtro gaussiano que aplica um efeito de embaçamento na imagem. A partir da imagem filtrada, são analisados a magnitude e a orientação do gradiente entre os pixels da imagem, de forma a identificar as bordas.
 
 A detecção de falhas internas e ranhuras como bordas é comum nesse algoritmo devido ao aparecimento indesejado de gradientes. Para controlar essa má interpretação, pode ser aplicado um processo de segmentação como pré-processamento.
 
@@ -71,6 +88,10 @@ Region Growing:
 - https://www.programmersought.com/article/81151779785/
 - https://developpaper.com/simple-implementation-of-region-growing-in-python/#:~:text=Region%20growing%20is%20an%20image,are%20met%2C%20region%20growth%20stops.
 - https://github.com/Borda/pyImSegm
+
+CNN Segmentation:
+- https://www.pyimagesearch.com/2021/05/14/convolution-and-cross-correlation-in-neural-networks/
+- https://www.pyimagesearch.com/2018/11/19/mask-r-cnn-with-opencv/
 
 Slic:
 - https://docs.opencv.org/3.4/df/d6c/group__ximgproc__superpixel.html
