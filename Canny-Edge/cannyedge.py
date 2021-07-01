@@ -22,7 +22,7 @@ image[canny_image != 0] = [0,255,0]
 cv2.imshow("Canny Edge", image)
 cv2.waitKey(0)
 
-filename2 = "idaho_cannyedge_kmeans.jpg"
+filename2 = "idaho_cannyedge.jpg"
 cv2.imwrite(filename2,image)
 
 
