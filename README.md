@@ -27,8 +27,8 @@ O algoritmo implementado pela classe da biblioteca do OpenCv tem como parâmetro
 
 No exemplo abaixo, a quantidade de regiões foi ajustada manualmente de forma a obter a borda da região principal.
 <p align="center">
-  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/Slic/bicolorfish.jpg" width="350">
-  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/Slic/bicolorfish_slic.jpg" width="347">
+  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/Slic/carb.jpg" width="350">
+  <img src="https://github.com/mayribeiro15/Pibiti-CBPF/blob/main/Slic/carb_slic.jpg" width="347">
 </p>
 
 Da mesma forma que o K-means, como o agrupamento de regiões é produto exclusivamente da semelhança entre os pixels, o Slic também pode ser considerado um algoritmo não supervisionado.
@@ -62,10 +62,20 @@ Em casos mais simplificados o algoritmo apresenta uma boa segmentação apenas c
 
 Além dos métodos acima, podem ser aplicados pré-processamentos específicos para um bom resultado do watershed. Por esse fator, a técnica é considerada como supervisionada pois demanda acompanhamento para segmentação manual ou treinamento das classes.
 
-## Referências
+## Materiais de Referência
 K-means:
+- https://docs.opencv.org/3.4/d1/d5c/tutorial_py_kmeans_opencv.html
+- https://www.thepythoncode.com/article/kmeans-for-image-segmentation-opencv-python
+
+Region Growing:
+- https://www.programmersought.com/article/81151779785/
+- https://developpaper.com/simple-implementation-of-region-growing-in-python/#:~:text=Region%20growing%20is%20an%20image,are%20met%2C%20region%20growth%20stops.
+- https://github.com/Borda/pyImSegm
 
 Slic:
+- https://docs.opencv.org/3.4/df/d6c/group__ximgproc__superpixel.html
+- https://www.programmersought.com/article/70014349754/
+- https://www.pyimagesearch.com/2014/07/28/a-slic-superpixel-tutorial-using-python/
 
 Watershed:
 - https://docs.opencv.org/4.5.2/d3/db4/tutorial_py_watershed.html
