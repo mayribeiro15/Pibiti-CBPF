@@ -8,7 +8,7 @@ import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 
-filename = "mineral.jpg"
+filename = "estromatolito.jpg"
 image = cv2.imread(filename) #lendo a imagem
 
 gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
