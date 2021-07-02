@@ -4,8 +4,7 @@
 O processamento de imagens para detecção de padrões em análises microscópicas representa um grande desafio em questões de automatização. O objetivo deste trabalho é utilizar a linguagem Python para implementar e analisar diversas técnicas de segmentação existentes a fim de gerar resultados sobre as abordagens mais eficientes. Primeiramente, foi realizado um embasamento teórico sobre segmentação de imagens, com ênfase nos métodos implementados pela biblioteca OpenCv, escolhida como base para o desenvolvimento dos códigos. Em seguida, foram analisados os principais algoritmos de segmentação e detecção de borda com a tentativa de facilitar a aplicação de técnicas cujos resultados ainda são dependentes de observação humana. Por fim, foi feita uma análise da aplicação da segmentação de imagens a Redes Neurais Deep Learning, em especial ao algoritmo CNN (Convolutional Neural Network), que possui uma configuração amplamente automatizada. Dessa forma, ao reunir tais análises subsequentes, os resultados demonstram um comparativo das técnicas de segmentação e do impacto da automatização no processamento de imagens aplicado.
 
 Referências principais:
-- https://kanezaki.github.io/pytorch-unsupervised-segmentation/ICASSP2018_kanezaki.pdf
-- https://daneshyari.com/article/preview/6922503.pdf
+[1]KANEZAKI, Asako. UNSUPERVISED IMAGE SEGMENTATION BY BACKPROPAGATION. Dissertação (National Institute of Advanced Industrial Science and Technology (AIST) 2-4-7 Aomi, Koto-ku) - Tokyo, Japan, 2018. Disponível em: https://kanezaki.github.io/pytorch-unsupervised-segmentation/ICASSP2018_kanezaki.pdf. Acesso em: 2 jul. 2021. [2]ASMUSSEN, Pascal; CONRAD, Olaf; GÜNTHER, Andreas; KRISCH, Mortiz; RILLER, Ulrich. Semi-automatic segmentation of petrographic thin section images using a “seeded-region growing algorithm” with an application to characterize wheathered subarkose sandstone. COMPUTERS & GEOSCIENCES, [s. l.], 23 jun. 2015.
 
 ## Técnicas de Segmentação
 ### K-means
@@ -79,7 +78,7 @@ Em casos mais simplificados o algoritmo apresenta uma boa segmentação apenas c
 
 Além dos métodos acima, podem ser aplicados pré-processamentos específicos para um bom resultado do watershed. Por esse fator, a técnica é considerada como supervisionada pois demanda acompanhamento para segmentação manual ou treinamento das classes.
 
-## CNN - Convolucional Neural Segmentation
+## CNN - Convolucional Neural Network Segmentation
 
 Nos algoritmos anteriores, era necessário um acompanhamento de forma a escolher regiões, número de segmentação ou até mesmo seeds inciais para o processamento da imagem. A segmentação por redes neurais ou deep learning traz uma automatização pois aplica técnicas de machine learning  em redes neurais para treinamento de classes de modo que o programa possa reconhecer sozinho padrões em várias camadas de processamento de imagem.
 
@@ -91,27 +90,10 @@ Para que a rede neural seja aplicada de fato, é necessário treinamento da segm
 
 ## Materiais de Referência
 Além das referências principais adicionadas no resumo, foram utilizados os seguintes materiais:
-K-means:
-- https://docs.opencv.org/3.4/d1/d5c/tutorial_py_kmeans_opencv.html
-- https://www.thepythoncode.com/article/kmeans-for-image-segmentation-opencv-python
-
-Region Growing:
-- https://www.programmersought.com/article/81151779785/
-- https://developpaper.com/simple-implementation-of-region-growing-in-python/#:~:text=Region%20growing%20is%20an%20image,are%20met%2C%20region%20growth%20stops.
-- https://github.com/Borda/pyImSegm
-
-CNN Segmentation:
-- https://www.pyimagesearch.com/2021/05/14/convolution-and-cross-correlation-in-neural-networks/
-- https://www.pyimagesearch.com/2018/11/19/mask-r-cnn-with-opencv/
-
-Slic:
-- https://docs.opencv.org/3.4/df/d6c/group__ximgproc__superpixel.html
-- https://www.programmersought.com/article/70014349754/
-- https://www.pyimagesearch.com/2014/07/28/a-slic-superpixel-tutorial-using-python/
-
-Watershed:
-- https://docs.opencv.org/4.5.2/d3/db4/tutorial_py_watershed.html
-
-Canny Edge:
-- https://docs.opencv.org/3.4/da/d5c/tutorial_canny_detector.html
-- https://www.pyimagesearch.com/2015/04/06/zero-parameter-automatic-canny-edge-detection-with-python-and-opencv/https://www.pyimagesearch.com/2015/04/06/zero-parameter-automatic-canny-edge-detection-with-python-and-opencv/
+- K-means: https://docs.opencv.org/3.4/d1/d5c/tutorial_py_kmeans_opencv.html ; https://www.thepythoncode.com/article/kmeans-for-image-segmentation-opencv-python
+- Region Growing: https://www.programmersought.com/article/81151779785/ ; https://developpaper.com/simple-implementation-of-region-growing-in-python/#:~:text=Region%20growing%20is%20an%20image,are%20met%2C%20region%20growth%20stops ; https://github.com/Borda/pyImSegm
+- Convolutional Filters: https://www.pyimagesearch.com/2021/05/14/convolution-and-cross-correlation-in-neural-networks/ 
+- Slic: https://docs.opencv.org/3.4/df/d6c/group__ximgproc__superpixel.html ; https://www.programmersought.com/article/70014349754/ ; https://www.pyimagesearch.com/2014/07/28/a-slic-superpixel-tutorial-using-python/ 
+- Watershed: https://docs.opencv.org/4.5.2/d3/db4/tutorial_py_watershed.html
+- Canny Edge: https://docs.opencv.org/3.4/da/d5c/tutorial_canny_detector.html ; https://www.pyimagesearch.com/2015/04/06/zero-parameter-automatic-canny-edge-detection-with-python-and-opencv/ ; https://www.pyimagesearch.com/2015/04/06/zero-parameter-automatic-canny-edge-detection-with-python-and-opencv/
+- CNN Segmentation: https://www.pyimagesearch.com/2018/11/19/mask-r-cnn-with-opencv/
